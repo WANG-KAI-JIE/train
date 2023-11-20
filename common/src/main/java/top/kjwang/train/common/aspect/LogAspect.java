@@ -1,4 +1,4 @@
-package top.kjwang.train.member.aspect;
+package top.kjwang.train.common.aspect;
 
 import cn.hutool.core.util.RandomUtil;
 import com.alibaba.fastjson.JSONObject;
