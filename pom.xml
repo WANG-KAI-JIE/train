@@ -18,6 +18,7 @@
 
     <modules>
         <module>member</module>
+        <module>common</module>
     </modules>
 
     <properties>
@@ -38,19 +39,19 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
-                <version>1.2.83</version>
+                <version>1.2.70</version>
             </dependency>
 
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
-                <version>5.8.22</version>
+                <version>5.6.3</version>
             </dependency>
 
             <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.18.28</version>
+                <groupId>top.kjwang</groupId>
+                <artifactId>common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
