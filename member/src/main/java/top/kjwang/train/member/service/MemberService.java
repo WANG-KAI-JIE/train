@@ -6,16 +6,17 @@ import top.kjwang.train.member.mapper.MemberMapper;
 
 /**
  * @author kjwang
- * @date 2023/11/20 16:01
+ * @date 2023/11/20 16:14
  * @description MemberService
  */
 
 @Service
 public class MemberService {
+
 	@Resource
 	private MemberMapper memberMapper;
 
 	public int count() {
-		return memberMapper.count();
+		return Math.toIntExact(memberMapper.countByExample(null));
 	}
 }
