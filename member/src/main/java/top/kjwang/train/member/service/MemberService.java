@@ -33,7 +33,7 @@ public class MemberService {
 		List<Member> list = memberMapper.selectByExample(memberExample);
 
 		if (CollUtil.isNotEmpty(list)) {
-			throw new RuntimeException("手机已注册");
+			throw new RuntimeException("手机号已注册");
 		}
 
 		Member member = new Member();
