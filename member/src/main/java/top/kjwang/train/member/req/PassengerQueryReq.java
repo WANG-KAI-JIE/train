@@ -3,7 +3,7 @@ package top.kjwang.train.member.req;
 import top.kjwang.train.common.req.PageReq;
 
 public class PassengerQueryReq extends PageReq {
-	private Long memberId;
+private Long memberId;
 
 	public Long getMemberId() {
 		return memberId;
@@ -14,8 +14,9 @@ public class PassengerQueryReq extends PageReq {
 	}
 
 	@Override
-public String toString() {
-return "PassengerQueryReq{" +
-"} " + super.toString();
-}
+	public String toString() {
+		return "PassengerQueryReq{" +
+				"memberId=" + memberId +
+				'}';
+	}
 }
