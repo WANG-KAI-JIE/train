@@ -12,3 +12,16 @@ token: {{token}}
 GET http://localhost:8001/member/passenger/query-list?page=1&size=2
 Accept: application/json
 token: {{token}}
+
+###
+POST http://localhost:8001/member/passenger/save
+Content-Type: application/json
+token: {{token}}
+
+{
+  "id": 1726912860870807552,
+  "memberId": 1726560172068966400,
+  "name": "小王同学",
+  "idCard": "12344321",
+  "type": "3"
+}
