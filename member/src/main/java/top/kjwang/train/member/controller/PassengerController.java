@@ -11,8 +11,6 @@ import top.kjwang.train.member.req.PassengerSaveReq;
 import top.kjwang.train.member.resp.PassengerQueryResp;
 import top.kjwang.train.member.service.PassengerService;
 
-import java.util.List;
-
 /**
  * @author kjwang
  * @date 2023/11/21 14:34
