@@ -1,4 +1,4 @@
-package top.kjwang.train.member.service;
+package top.kjwang.train.${module}.service;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.date.DateTime;
@@ -8,24 +8,22 @@ import com.github.pagehelper.PageInfo;
 import top.kjwang.train.common.context.LoginMemberContext;
 import top.kjwang.train.common.resp.PageResp;
 import top.kjwang.train.common.util.SnowUtil;
-import top.kjwang.train.member.domain.${Domain};
-import top.kjwang.train.member.domain.${Domain}Example;
-import top.kjwang.train.member.mapper.${Domain}Mapper;
-import top.kjwang.train.member.req.${Domain}QueryReq;
-import top.kjwang.train.member.req.${Domain}SaveReq;
-import top.kjwang.train.member.resp.${Domain}QueryResp;
+import top.kjwang.train.${module}.domain.${Domain};
+import top.kjwang.train.${module}.domain.${Domain}Example;
+import top.kjwang.train.${module}.mapper.${Domain}Mapper;
+import top.kjwang.train.${module}.req.${Domain}QueryReq;
+import top.kjwang.train.${module}.req.${Domain}SaveReq;
+import top.kjwang.train.${module}.resp.${Domain}QueryResp;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ${Domain}Service {
 
     private static final Logger LOG = LoggerFactory.getLogger(${Domain}Service.class);
-    
+
     @Resource
     private ${Domain}Mapper ${domain}Mapper;
 

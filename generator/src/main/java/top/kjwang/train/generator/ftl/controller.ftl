@@ -1,12 +1,12 @@
-package top.kjwang.train.member.controller;
+package top.kjwang.train.${module}.controller;
 
 import top.kjwang.train.common.context.LoginMemberContext;
 import top.kjwang.train.common.resp.CommonResp;
 import top.kjwang.train.common.resp.PageResp;
-import top.kjwang.train.member.req.${Domain}QueryReq;
-import top.kjwang.train.member.req.${Domain}SaveReq;
-import top.kjwang.train.member.resp.${Domain}QueryResp;
-import top.kjwang.train.member.service.${Domain}Service;
+import top.kjwang.train.${module}.req.${Domain}QueryReq;
+import top.kjwang.train.${module}.req.${Domain}SaveReq;
+import top.kjwang.train.${module}.resp.${Domain}QueryResp;
+import top.kjwang.train.${module}.service.${Domain}Service;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

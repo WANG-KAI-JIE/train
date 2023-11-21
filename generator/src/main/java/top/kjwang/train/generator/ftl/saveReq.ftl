@@ -1,4 +1,4 @@
-package top.kjwang.train.member.req;
+package top.kjwang.train.${module}.req;
 
 <#list typeSet as type>
 		<#if type=='Date'>
