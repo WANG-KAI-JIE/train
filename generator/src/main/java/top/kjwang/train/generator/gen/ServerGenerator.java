@@ -5,6 +5,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+import top.kjwang.train.generator.util.DbUtil;
 import top.kjwang.train.generator.util.FreemarkerUtil;
 
 import java.io.File;
@@ -35,7 +36,6 @@ public class ServerGenerator {
 		// new File(servicePath).mkdirs();
 		System.out.println("servicePath: " + serverPath);
 
-
 		// 读取 table 节点
 		Document document = new SAXReader().read("generator/" + generatorPath);
 		Node table = document.selectSingleNode("//table");
@@ -44,12 +44,24 @@ public class ServerGenerator {
 		Node domainObjectName = table.selectSingleNode("@domainObjectName");
 		System.out.println(tableName.getText() + "/" + domainObjectName.getText());
 
-		// 示例：表名 kjwang_test
-		// Domain = kjwangTest
+		// 为 DbUtil 设置数据源
+		Node connectionURL = document.selectSingleNode("//@connectionURL");
+		Node userId = document.selectSingleNode("//@userId");
+		Node password = document.selectSingleNode("//@password");
+		System.out.println("url: " + connectionURL.getText());
+		System.out.println("user: " + userId.getText());
+		System.out.println("password: " + password.getText());
+		DbUtil.url = connectionURL.getText();
+		DbUtil.user = userId.getText();
+		DbUtil.password = password.getText();
+
+
+		// 示例：表名 mqxu_test
+		// Domain = MqxuTest
 		String Domain = domainObjectName.getText();
-		// domain = kjwangTest
+		// domain = mqxuTest
 		String domain = Domain.substring(0, 1).toLowerCase() + Domain.substring(1);
-		// do_main = kjwang_test
+		// do_main = mqxu_test
 		String do_main = tableName.getText().replaceAll("_", "-");
 
 		// 组装参数
@@ -59,8 +71,6 @@ public class ServerGenerator {
 		param.put("do_main", do_main);
 		System.out.println("组装参数：" + param);
 
-		//FreemarkerUtil.initConfig("service.ftl");
-		//FreemarkerUtil.generator(servicePath + Domain + "Service.java", param);
 		gen(Domain, param, "service");
 		gen(Domain, param, "controller");
 	}
