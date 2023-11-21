@@ -4,6 +4,6 @@ Content-Type: application/json
 {
   "memberId": "1",
   "name": "kjwang",
-  "idCard": "123456789",
+  "idCard": "",
   "type": "3"
 }
