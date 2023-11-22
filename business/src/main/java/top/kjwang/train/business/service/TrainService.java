@@ -58,14 +58,20 @@ public PageResp<TrainQueryResp> queryList(TrainQueryReq req) {
 
     List<TrainQueryResp> list = BeanUtil.copyToList(trainList, TrainQueryResp.class);
 
-        PageResp<TrainQueryResp> pageResp = new PageResp<>();
-            pageResp.setTotal(pageInfo.getTotal());
-            pageResp.setList(list);
-            return pageResp;
-            }
+    PageResp<TrainQueryResp> pageResp = new PageResp<>();
+        pageResp.setTotal(pageInfo.getTotal());
+        pageResp.setList(list);
+        return pageResp;
+    }
 
-            public void delete(Long id) {
-            trainMapper.deleteByPrimaryKey(id);
-            }
+    public void delete(Long id) {
+        trainMapper.deleteByPrimaryKey(id);
+    }
 
-            }
+    public List<TrainQueryResp> queryAll() {
+        TrainExample trainExample = new TrainExample();
+        trainExample.setOrderByClause("code desc");
+        List<Train> trainList = trainMapper.selectByExample(trainExample);
+        return BeanUtil.copyToList(trainList, TrainQueryResp.class);
+    }
+}
