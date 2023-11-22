@@ -1,10 +1,13 @@
 package top.kjwang.train.business.service;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import top.kjwang.train.common.exception.BusinessException;
+import top.kjwang.train.common.exception.BusinessExceptionEnum;
 import top.kjwang.train.common.resp.PageResp;
 import top.kjwang.train.common.util.SnowUtil;
 import top.kjwang.train.business.domain.TrainCarriage;
@@ -32,6 +35,11 @@ public class TrainCarriageService {
 		DateTime now = DateTime.now();
 		TrainCarriage trainCarriage = BeanUtil.copyProperties(req, TrainCarriage.class);
 		if (ObjectUtil.isNull(trainCarriage.getId())) {
+			// 保存之前，先校验唯一键是否存在
+			TrainCarriage trainCarriageDB = selectByUnique(req.getTrainCode(), req.getIndex());
+			if (ObjectUtil.isNotEmpty(trainCarriageDB)) {
+				throw new BusinessException(BusinessExceptionEnum.BUSINESS_TRAIN_CARRIAGE_INDEX_UNIQUE_ERROR);
+			}
 			trainCarriage.setId(SnowUtil.getSnowflakeNextId());
 			trainCarriage.setCreateTime(now);
 			trainCarriage.setUpdateTime(now);
@@ -39,6 +47,19 @@ public class TrainCarriageService {
 		} else {
 			trainCarriage.setUpdateTime(now);
 			trainCarriageMapper.updateByPrimaryKey(trainCarriage);
+		}
+	}
+
+	private TrainCarriage selectByUnique(String trainCode, Integer index) {
+		TrainCarriageExample trainCarriageExample = new TrainCarriageExample();
+		trainCarriageExample.createCriteria()
+				.andTrainCodeEqualTo(trainCode)
+				.andIndexEqualTo(index);
+		List<TrainCarriage> list = trainCarriageMapper.selectByExample(trainCarriageExample);
+		if (CollUtil.isNotEmpty(list)) {
+			return list.get(0);
+		} else {
+			return null;
 		}
 	}
 
