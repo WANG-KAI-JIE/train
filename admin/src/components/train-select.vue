@@ -18,6 +18,7 @@
     </a-select-option>
   </a-select>
 </template>
+
 <script setup>
 import { defineProps, defineEmits, onMounted, ref, watch } from "vue";
 import axios from "axios";
@@ -38,11 +39,13 @@ const emit = defineEmits(["update:modelValue", "change"]);
 
 const trainCode = ref();
 const trains = ref([]);
+
 const _width = ref(props.width);
 if (Tool.isEmpty(props.width)) {
   _width.value = "100%";
 }
-//利用watch，动态获取父组件的值，如果放在 onMounted或其它方法里，则只有第一次有效
+
+// 利用watch，动态获取父组件的值，如果放在 onMounted或其它方法里，则只有第一次有效
 watch(
   () => props.modelValue,
   () => {
@@ -52,7 +55,8 @@ watch(
   { immediate: true }
 );
 /**
- *查询所有的车次，用于车次下拉框*/
+ *查询所有的车次，用于车次下拉框
+ */
 const queryAllTrain = () => {
   axios.get("/business/admin/train/query-all").then((response) => {
     let data = response.data;
@@ -64,15 +68,20 @@ const queryAllTrain = () => {
   });
 };
 
+/**
+ * 车次下拉框筛选
+ */
 const filterTrainCodeOption = (input, option) => {
   console.log(input, option);
   return option.label.toLowerCase().indexOf(input.toLowerCase()) >= 0;
 };
+
 /**
- *将当前组件的值响应给父组件*
+ * 将当前组件的值响应给父组件
+ * @param value
  */
 const onChange = (value) => {
-  emit("update: modelvalue", value);
+  emit("update:modelvalue", value);
   let train = trains.value.filter((item) => item.code === value)[0];
   if (Tool.isEmpty(train)) {
     train = {};

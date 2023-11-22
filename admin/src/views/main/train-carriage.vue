@@ -50,7 +50,7 @@
     >
       <a-form-item label="车次编号">
         <train-select-view
-          v-model="trainCarriage.trainCode"
+          v-model:value="trainCarriage.trainCode"
         ></train-select-view>
       </a-form-item>
       <a-form-item label="厢号">

@@ -42,7 +42,7 @@
       :wrapper-col="{ span: 20 }"
     >
       <a-form-item label="车次编号">
-        <train-select-view v-model="trainStation.trainCode"></train-select-view>
+        <train-select-view v-model:value="trainStation.trainCode"></train-select-view>
       </a-form-item>
 
       <a-form-item label="站序">
