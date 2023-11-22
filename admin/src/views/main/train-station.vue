@@ -41,21 +41,9 @@
       :wrapper-col="{ span: 20 }"
     >
       <a-form-item label="车次编号">
-        <a-select
-          v-model:value="trainStation.trainCode"
-          show-search
-          :filterOption="filterTrainCodeOption"
-        >
-          <a-select-option
-            v-for="item in trains"
-            :key="item.code"
-            :value="item.code"
-            :label="item.code + item.start + item.end"
-          >
-            {{ item.code }} | {{ item.start }} ~ {{ item.end }}
-          </a-select-option>
-        </a-select>
+        <train-select-view v-model="trainStation.trainCode"></train-select-view>
       </a-form-item>
+
       <a-form-item label="站序">
         <a-input v-model:value="trainStation.index" />
       </a-form-item>
@@ -98,6 +86,7 @@ import { ref, onMounted, watch } from "vue";
 import { notification } from "ant-design-vue";
 import axios from "axios";
 import { pinyin } from "pinyin-pro";
+import trainSelectView from "@/components/train-select";
 
 const visible = ref(false);
 let trainStation = ref({
