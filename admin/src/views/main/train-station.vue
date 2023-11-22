@@ -1,7 +1,8 @@
 <template>
   <p>
     <a-space>
-      <a-button type="primary" @click="handleQuery()">刷新</a-button>
+      <train-select-view v-model="params.trainCode" width="200px" />
+      <a-button type="primary" @click="handleQuery()">查找</a-button>
       <a-button type="primary" @click="onAdd">新增</a-button>
     </a-space>
   </p>
@@ -220,6 +221,10 @@ const handleOk = () => {
     });
 };
 
+let params = ref({
+  trainCode: null,
+});
+
 const handleQuery = (param) => {
   if (!param) {
     param = {
@@ -228,11 +233,13 @@ const handleQuery = (param) => {
     };
   }
   loading.value = true;
+
   axios
     .get("/business/admin/train-station/query-list", {
       params: {
         page: param.page,
         size: param.size,
+        trainCode: params.value.trainCode,
       },
     })
     .then((response) => {
