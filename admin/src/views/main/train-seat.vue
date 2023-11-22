@@ -1,7 +1,8 @@
 <template>
   <p>
     <a-space>
-      <a-button type="primary" @click="handleQuery()">刷新</a-button>
+      <train-select-view v-model="params.trainCode" width="200px" />
+      <a-button type="primary" @click="handleQuery()">查找</a-button>
       <a-button type="primary" @click="onAdd">新增</a-button>
     </a-space>
   </p>
@@ -98,7 +99,7 @@
 import { ref, onMounted } from "vue";
 import { notification } from "ant-design-vue";
 import axios from "axios";
-import trainSelectView from "@/components/train-select";
+import TrainSelectView from "@/components/train-select";
 
 const SEAT_COL_ARRAY = window.SEAT_COL_ARRAY;
 const SEAT_TYPE_ARRAY = window.SEAT_TYPE_ARRAY;
@@ -204,6 +205,10 @@ const handleOk = () => {
     });
 };
 
+let params = ref({
+  trainCode: null,
+});
+
 const handleQuery = (param) => {
   if (!param) {
     param = {
@@ -217,6 +222,7 @@ const handleQuery = (param) => {
       params: {
         page: param.page,
         size: param.size,
+        trainCode: params.value.trainCode,
       },
     })
     .then((response) => {
