@@ -76,6 +76,7 @@
           v-model:value="trainStation.stopTime"
           valueFormat="HH:mm:ss"
           placeholder="请选择时间"
+          disabled
         />
       </a-form-item>
       <a-form-item label="里程（公里）">
@@ -92,6 +93,7 @@ import axios from "axios";
 import { pinyin } from "pinyin-pro";
 import TrainSelectView from "@/components/train-select";
 import StationSelectView from "@/components/station-select";
+import dayjs from "dayjs";
 
 const visible = ref(false);
 let trainStation = ref({
@@ -161,6 +163,36 @@ const columns = [
     dataIndex: "operation",
   },
 ];
+
+// 自动计算停车时长
+watch(
+  () => trainStation.value.inTime,
+  () => {
+    let diff = dayjs(trainStation.value.outTime, 'HH:mm:ss').diff(
+      dayjs(trainStation.value.inTime, 'HH:mm:ss'),
+      'seconds'
+    );
+    trainStation.value.stopTime = dayjs('00:00:00', 'HH:mm:ss')
+      .second(diff)
+      .format('HH:mm:ss');
+  },
+  { immediate: true }
+);
+
+// 自动计算停车时长
+watch(
+  () => trainStation.value.outTime,
+  () => {
+    let diff = dayjs(trainStation.value.outTime, 'HH:mm:ss').diff(
+      dayjs(trainStation.value.inTime, 'HH:mm:ss'),
+      'seconds'
+    );
+    trainStation.value.stopTime = dayjs('00:00:00', 'HH:mm:ss')
+      .second(diff)
+      .format('HH:mm:ss');
+  },
+  { immediate: true }
+);
 
 watch(
   () => trainStation.value.name,
