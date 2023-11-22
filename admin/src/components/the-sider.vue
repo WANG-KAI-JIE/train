@@ -11,10 +11,18 @@
           欢迎
         </router-link>
       </a-menu-item>
+
       <a-menu-item key="/about">
         <router-link to="/about">
           <user-outlined/>
           关于
+        </router-link>
+      </a-menu-item>
+
+      <a-menu-item key="/station">
+        <router-link to="/station">
+          <home-outlined/>
+          车站管理
         </router-link>
       </a-menu-item>
     </a-menu>
