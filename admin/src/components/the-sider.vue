@@ -46,6 +46,13 @@
           车厢管理
         </router-link>
       </a-menu-item>
+
+      <a-menu-item key="/train-seat">
+        <router-link to="/train-seat">
+          <car-outlined />
+          座位管理
+        </router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
