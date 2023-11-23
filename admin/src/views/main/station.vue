@@ -46,7 +46,7 @@
       <a-form-item label="站名拼音">
         <a-input v-model:value="station.namePinyin" disabled />
       </a-form-item>
-      <a-form-item label="站名拼音首字母">
+      <a-form-item label="拼音首字母">
         <a-input v-model:value="station.namePy" disabled />
       </a-form-item>
     </a-form>
@@ -57,7 +57,7 @@
 import { ref, onMounted, watch } from "vue";
 import { notification } from "ant-design-vue";
 import axios from "axios";
-import { pinyin } from 'pinyin-pro';
+import { pinyin } from "pinyin-pro";
 
 const visible = ref(false);
 let station = ref({
@@ -88,7 +88,7 @@ const columns = [
     key: "namePinyin",
   },
   {
-    title: "站名拼音首字母",
+    title: "拼音首字母",
     dataIndex: "namePy",
     key: "namePy",
   },
@@ -104,18 +104,18 @@ watch(
   () => {
     if (Tool.isNotEmpty(station.value.name)) {
       station.value.namePinyin = pinyin(station.value.name, {
-        toneType: 'none',
-      }).replaceAll(' ', '');
+        toneType: "none",
+      }).replaceAll(" ", "");
       station.value.namePy = pinyin(station.value.name, {
-        pattern: 'first',
-        toneType: 'none',
-      }).replaceAll(' ', '');
+        pattern: "first",
+        toneType: "none",
+      }).replaceAll(" ", "");
     } else {
-      station.value.namePinyin = '';
-      station.value.namePy = '';
+      station.value.namePinyin = "";
+      station.value.namePy = "";
     }
   },
-  { immediate: true}
+  { immediate: true }
 );
 
 const onAdd = () => {

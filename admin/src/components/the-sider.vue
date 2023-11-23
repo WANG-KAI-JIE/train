@@ -36,21 +36,21 @@
       <a-menu-item key="/train-station">
         <router-link to="/train-station">
           <car-outlined />
-          车次管理
+          火车车站
         </router-link>
       </a-menu-item>
 
       <a-menu-item key="/train-carriage">
         <router-link to="/train-carriage">
           <car-outlined />
-          车厢管理
+          火车车厢
         </router-link>
       </a-menu-item>
 
       <a-menu-item key="/train-seat">
         <router-link to="/train-seat">
           <car-outlined />
-          座位管理
+          火车座位
         </router-link>
       </a-menu-item>
     </a-menu>
