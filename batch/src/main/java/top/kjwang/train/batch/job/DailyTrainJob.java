@@ -33,12 +33,12 @@ public class DailyTrainJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         // 增加日志流水号
         MDC.put("LOG_ID", System.currentTimeMillis() + RandomUtil.randomString(3));
-        LOG.info("生成5天后的车次定时任务开始");
+        LOG.info("生成15天后的车次定时任务开始");
         Date today = new Date();
-        DateTime dateTime = DateUtil.offsetDay(today, 5);
+        DateTime dateTime = DateUtil.offsetDay(today, 15);
         Date offsetDay = dateTime.toJdkDate();
         CommonResp<Object> commonResp = businessFeign.genDaily(offsetDay);
         LOG.info("commonResp:{}", commonResp);
-        LOG.info("生成5天后的车次定时任务结束");
+        LOG.info("生成15天后的车次定时任务结束");
     }
 }
