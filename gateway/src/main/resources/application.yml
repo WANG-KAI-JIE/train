@@ -2,6 +2,8 @@ server:
   port: 8000
 
 spring:
+  application:
+    name: batch
   cloud:
     gateway:
       routes[0]:
