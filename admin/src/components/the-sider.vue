@@ -12,6 +12,26 @@
       <a-menu-item key="/about">
         <router-link to="/about"> <user-outlined /> 关于 </router-link>
       </a-menu-item>
+      <a-sub-menu key="business">
+        <template #title>
+          <span>
+            <UnorderedListOutlined/>
+              业务管理
+          </span>
+        </template>
+        <a-menu-item key="/business/daily-train">
+          <router-link to="/business/daily-train">
+            <user-outlined/>
+            每日车次
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="/business/daily-train-station">
+          <router-link to="/business/daily-train-station">
+            <user-outlined/>
+            每日车站
+          </router-link>
+        </a-menu-item>
+      </a-sub-menu>
       <a-sub-menu key="batch">
         <template #title>
           <span>
@@ -57,20 +77,6 @@
             <car-outlined /> 火车座位
           </router-link>
         </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="business">
-        <template #title>
-          <span>
-            <UnorderedListOutlined/>
-              业务管理
-          </span>
-        </template>
-      <a-menu-item key="/business/daily-train">
-        <router-link to="/business/daily-train">
-          <user-outlined/>
-          每日车次
-        </router-link>
-      </a-menu-item>
       </a-sub-menu>
     </a-menu>
   </a-layout-sider>
