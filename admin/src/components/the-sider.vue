@@ -44,6 +44,12 @@
           </router-link>
         </a-menu-item>
       </a-sub-menu>
+      <a-menu-item key="/business/programmer">
+        <router-link to="/business/programmer">
+          <user-outlined />
+          程序员管理
+        </router-link>
+      </a-menu-item>
       <a-sub-menu key="batch">
         <template #title>
           <span>
