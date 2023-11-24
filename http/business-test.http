@@ -12,3 +12,7 @@ Accept: application/json
 ###
 GET http://localhost:8000/business/admin/train/gen-seat/G1
 Accept: application/json
+
+###
+GET http://localhost:8000/business/admin/daily-train-station/query-list?page=1&size=10
+Accept: application/json
