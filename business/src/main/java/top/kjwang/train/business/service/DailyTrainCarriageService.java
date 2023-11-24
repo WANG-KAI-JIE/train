@@ -8,6 +8,7 @@ import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import top.kjwang.train.business.domain.TrainCarriage;
+import top.kjwang.train.business.enums.SeatColEnum;
 import top.kjwang.train.business.mapper.TrainCarriageMapper;
 import top.kjwang.train.common.resp.PageResp;
 import top.kjwang.train.common.util.SnowUtil;
@@ -38,6 +39,12 @@ public class DailyTrainCarriageService {
 
 	public void save(DailyTrainCarriageSaveReq req) {
 		DateTime now = DateTime.now();
+
+		// 自动计算出列数和座位数
+		List<SeatColEnum> seatColEnums = SeatColEnum.getColsByType(req.getSeatType());
+		req.setColCount(seatColEnums.size());
+		req.setSeatCount(req.getColCount() * req.getRowCount());
+
 		DailyTrainCarriage dailyTrainCarriage = BeanUtil.copyProperties(req, DailyTrainCarriage.class);
 		if (ObjectUtil.isNull(dailyTrainCarriage.getId())) {
 			dailyTrainCarriage.setId(SnowUtil.getSnowflakeNextId());

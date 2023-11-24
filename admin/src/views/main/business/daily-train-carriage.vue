@@ -41,7 +41,7 @@
                        placeholder="请选择日期"/>
       </a-form-item>
       <a-form-item label="车次编号">
-        <train-select-view v-model="dailyTrainCarriage.trainCode"/>
+        <train-select-view v-model:value="dailyTrainCarriage.trainCode"/>
       </a-form-item>
       <a-form-item label="厢序">
         <a-input v-model:value="dailyTrainCarriage.index"/>

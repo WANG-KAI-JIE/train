@@ -1,6 +1,7 @@
 package top.kjwang.train.business.req;
 
 import java.util.Date;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.validation.constraints.NotBlank;
@@ -11,64 +12,64 @@ public class DailyTrainCarriageSaveReq {
 	/**
 	 * id
 	 */
-    private Long id;
+	private Long id;
 
 	/**
 	 * 日期
 	 */
-			@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	@NotNull(message = "【日期】不能为空")
-    private Date date;
+	private Date date;
 
 	/**
 	 * 车次编号
 	 */
 	@NotBlank(message = "【车次编号】不能为空")
-    private String trainCode;
+	private String trainCode;
 
 	/**
 	 * 厢序
 	 */
 	@NotNull(message = "【厢序】不能为空")
-    private Integer index;
+	private Integer index;
 
 	/**
 	 * 座位类型|枚举[SeatTypeEnum]
 	 */
 	@NotBlank(message = "【座位类型】不能为空")
-    private String seatType;
+	private String seatType;
 
 	/**
 	 * 座位数
 	 */
-	@NotNull(message = "【座位数】不能为空")
-    private Integer seatCount;
+	// @NotNull(message = "【座位数】不能为空")
+	private Integer seatCount;
 
 	/**
 	 * 排数
 	 */
 	@NotNull(message = "【排数】不能为空")
-    private Integer rowCount;
+	private Integer rowCount;
 
 	/**
 	 * 列数
 	 */
-	@NotNull(message = "【列数】不能为空")
-    private Integer colCount;
+	// @NotNull(message = "【列数】不能为空")
+	private Integer colCount;
 
 	/**
 	 * 新增时间
 	 */
-			@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date createTime;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date createTime;
 
 	/**
 	 * 修改时间
 	 */
-			@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date updateTime;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date updateTime;
 
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -76,7 +77,7 @@ public class DailyTrainCarriageSaveReq {
 		this.id = id;
 	}
 
-    public Date getDate() {
+	public Date getDate() {
 		return date;
 	}
 
@@ -84,7 +85,7 @@ public class DailyTrainCarriageSaveReq {
 		this.date = date;
 	}
 
-    public String getTrainCode() {
+	public String getTrainCode() {
 		return trainCode;
 	}
 
@@ -92,7 +93,7 @@ public class DailyTrainCarriageSaveReq {
 		this.trainCode = trainCode;
 	}
 
-    public Integer getIndex() {
+	public Integer getIndex() {
 		return index;
 	}
 
@@ -100,7 +101,7 @@ public class DailyTrainCarriageSaveReq {
 		this.index = index;
 	}
 
-    public String getSeatType() {
+	public String getSeatType() {
 		return seatType;
 	}
 
@@ -108,7 +109,7 @@ public class DailyTrainCarriageSaveReq {
 		this.seatType = seatType;
 	}
 
-    public Integer getSeatCount() {
+	public Integer getSeatCount() {
 		return seatCount;
 	}
 
@@ -116,7 +117,7 @@ public class DailyTrainCarriageSaveReq {
 		this.seatCount = seatCount;
 	}
 
-    public Integer getRowCount() {
+	public Integer getRowCount() {
 		return rowCount;
 	}
 
@@ -124,7 +125,7 @@ public class DailyTrainCarriageSaveReq {
 		this.rowCount = rowCount;
 	}
 
-    public Integer getColCount() {
+	public Integer getColCount() {
 		return colCount;
 	}
 
@@ -132,7 +133,7 @@ public class DailyTrainCarriageSaveReq {
 		this.colCount = colCount;
 	}
 
-    public Date getCreateTime() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 
@@ -140,7 +141,7 @@ public class DailyTrainCarriageSaveReq {
 		this.createTime = createTime;
 	}
 
-    public Date getUpdateTime() {
+	public Date getUpdateTime() {
 		return updateTime;
 	}
 
@@ -164,7 +165,7 @@ public class DailyTrainCarriageSaveReq {
 		sb.append(", colCount=").append(colCount);
 		sb.append(", createTime=").append(createTime);
 		sb.append(", updateTime=").append(updateTime);
-				sb.append("]");
+		sb.append("]");
 		return sb.toString();
 	}
 }
