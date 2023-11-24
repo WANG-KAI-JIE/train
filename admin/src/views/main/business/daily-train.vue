@@ -1,7 +1,13 @@
 <template>
   <p>
     <a-space>
-      <a-button type="primary" @click="handleQuery()">刷新</a-button>
+      <a-date-picker
+        v-model:value="params.date"
+        value-format="YYYY-MM-DD"
+        placeholder="请选择日期"
+      />
+      <train-select-view v-model:value="params.code" width="200px" />
+      <a-button type="primary" @click="handleQuery()">查询</a-button>
       <a-button type="primary" @click="onAdd">新增</a-button>
     </a-space>
   </p>
@@ -225,6 +231,11 @@ const handleOk = () => {
     });
 };
 
+let params = ref({
+  code: null,
+  date: null,
+});
+
 const handleQuery = (param) => {
   if (!param) {
     param = {
@@ -238,6 +249,8 @@ const handleQuery = (param) => {
       params: {
         page: param.page,
         size: param.size,
+        code: params.value.code,
+        date: params.value.date,
       },
     })
     .then((response) => {
