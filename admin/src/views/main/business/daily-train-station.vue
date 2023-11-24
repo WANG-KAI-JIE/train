@@ -81,9 +81,10 @@
       </a-form-item>
       <a-form-item label="停站时长">
         <a-time-picker
-          v-model:value="dailyTrainStation.stopTime"
+          v-model:value="dailyTrain.stopTime"
           valueFormat="HH:mm:ss"
           placeholder="请选择时间"
+          disabled
         />
       </a-form-item>
       <a-form-item label="里程（公里）">
@@ -99,6 +100,7 @@ import { notification } from "ant-design-vue";
 import axios from "axios";
 import TrainSelectView from "@/components/train-select";
 import { pinyin } from "pinyin-pro";
+import dayjs from "dayjs";
 
 const visible = ref(false);
 let dailyTrainStation = ref({
@@ -231,6 +233,36 @@ watch(
       } else {
         dailyTrainStation.value.namePinyin = "";
       }
+    },
+    { immediate: true }
+);
+
+// 自动计算停车时长
+watch(
+    () => dailyTrainStation.value.inTime,
+    () => {
+      let diff = dayjs(dailyTrainStation.value.outTime, "HH:mm:ss").diff(
+          dayjs(dailyTrainStation.value.startTime, "HH:mm:ss"),
+          "seconds"
+      );
+      dailyTrainStation.value.stopTime = dayjs("00:00:00", "HH:mm:ss")
+          .second(diff)
+          .format("HH:mm:ss");
+    },
+    { immediate: true }
+);
+
+// 自动计算停车时长
+watch(
+    () => dailyTrainStation.value.outTime,
+    () => {
+      let diff = dayjs(dailyTrainStation.value.outTime, "HH:mm:ss").diff(
+          dayjs(dailyTrainStation.value.startTime, "HH:mm:ss"),
+          "seconds"
+      );
+      dailyTrainStation.value.stopTime = dayjs("00:00:00", "HH:mm:ss")
+          .second(diff)
+          .format("HH:mm:ss");
     },
     { immediate: true }
 );
