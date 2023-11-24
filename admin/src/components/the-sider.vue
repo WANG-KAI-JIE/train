@@ -15,26 +15,32 @@
       <a-sub-menu key="business">
         <template #title>
           <span>
-            <UnorderedListOutlined/>
-              业务管理
+            <UnorderedListOutlined />
+            业务管理
           </span>
         </template>
         <a-menu-item key="/business/daily-train">
           <router-link to="/business/daily-train">
-            <user-outlined/>
+            <user-outlined />
             每日车次
           </router-link>
         </a-menu-item>
         <a-menu-item key="/business/daily-train-station">
           <router-link to="/business/daily-train-station">
-            <user-outlined/>
+            <user-outlined />
             每日车站
           </router-link>
         </a-menu-item>
         <a-menu-item key="/business/daily-train-carriage">
           <router-link to="/business/daily-train-carriage">
-            <user-outlined/>
+            <user-outlined />
             每日车厢
+          </router-link>
+        </a-menu-item>
+        <a-menu-item key="/business/daily-train-seat">
+          <router-link to="/business/daily-train-seat">
+            <user-outlined />
+            每日座位
           </router-link>
         </a-menu-item>
       </a-sub-menu>
@@ -89,15 +95,15 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import router from '@/router';
+import { ref, watch } from "vue";
+import router from "@/router";
 
 const selectedKeys = ref([]);
 
 watch(
   () => router.currentRoute.value.path,
   (newValue) => {
-    console.log('watch', newValue);
+    console.log("watch", newValue);
     selectedKeys.value = [];
     selectedKeys.value.push(newValue);
   },
