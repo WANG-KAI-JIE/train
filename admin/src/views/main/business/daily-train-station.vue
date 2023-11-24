@@ -63,7 +63,7 @@
         <a-input v-model:value="dailyTrainStation.name" />
       </a-form-item>
       <a-form-item label="站名拼音">
-        <a-input v-model:value="dailyTrainStation.namePinyin" />
+        <a-input v-model:value="dailyTrainStation.namePinyin" disabled/>
       </a-form-item>
       <a-form-item label="进站时间">
         <a-time-picker
@@ -94,10 +94,11 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import {ref, onMounted, watch} from "vue";
 import { notification } from "ant-design-vue";
 import axios from "axios";
 import TrainSelectView from "@/components/train-select";
+import { pinyin } from "pinyin-pro";
 
 const visible = ref(false);
 let dailyTrainStation = ref({
@@ -218,6 +219,21 @@ const handleOk = () => {
       }
     });
 };
+
+// 拼音
+watch(
+    () => dailyTrainStation.value.name,
+    () => {
+      if (Tool.isNotEmpty(dailyTrainStation.value.name)) {
+        dailyTrainStation.value.namePinyin = pinyin(dailyTrainStation.value.name, {
+          toneType: "none",
+        }).replaceAll(" ", "");
+      } else {
+        dailyTrainStation.value.namePinyin = "";
+      }
+    },
+    { immediate: true }
+);
 
 let params = ref({
   date: null,
