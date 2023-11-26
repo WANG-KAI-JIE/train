@@ -1,4 +1,4 @@
-package top.kjwang.train.gateway.config.util;
+package top.kjwang.train.gateway.util;
 
 
 import cn.hutool.core.date.DateField;

@@ -41,6 +41,6 @@
                              targetPackage="top.kjwang.train.business.mapper"
                              type="XMLMAPPER"/>
 
-        <table tableName="programmer" domainObjectName="Programmer"/>
+        <table tableName="daily_train_ticket" domainObjectName="DailyTrainTicket"/>
     </context>
 </generatorConfiguration>
