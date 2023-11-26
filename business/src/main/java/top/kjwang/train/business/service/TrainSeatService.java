@@ -7,8 +7,10 @@ import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.transaction.annotation.Transactional;
+import top.kjwang.train.business.domain.DailyTrainSeatExample;
 import top.kjwang.train.business.domain.TrainCarriage;
 import top.kjwang.train.business.enums.SeatColEnum;
+import top.kjwang.train.business.mapper.DailyTrainSeatMapper;
 import top.kjwang.train.common.resp.PageResp;
 import top.kjwang.train.common.util.SnowUtil;
 import top.kjwang.train.business.domain.TrainSeat;
@@ -22,6 +24,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,6 +36,9 @@ public class TrainSeatService {
 
 	@Resource
 	private TrainCarriageService trainCarriageService;
+
+	@Resource
+	private DailyTrainSeatMapper dailyTrainSeatMapper;
 
 	public void save(TrainSeatSaveReq req) {
 		DateTime now = DateTime.now();
