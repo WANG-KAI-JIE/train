@@ -6,6 +6,7 @@ import cn.hutool.core.date.DateTime;
 import cn.hutool.core.util.ObjectUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.transaction.annotation.Transactional;
 import top.kjwang.train.common.exception.BusinessException;
 import top.kjwang.train.common.exception.BusinessExceptionEnum;
 import top.kjwang.train.common.resp.PageResp;
@@ -87,10 +88,10 @@ public class TrainService {
 		trainMapper.deleteByPrimaryKey(id);
 	}
 
+	@Transactional
 	public List<TrainQueryResp> queryAll() {
-		TrainExample trainExample = new TrainExample();
-		trainExample.setOrderByClause("code desc");
-		List<Train> trainList = trainMapper.selectByExample(trainExample);
+		List<Train> trainList = selectAll();
+		trainList = selectAll();
 		return BeanUtil.copyToList(trainList, TrainQueryResp.class);
 	}
 
