@@ -91,7 +91,7 @@ public class TrainService {
 	@Transactional
 	public List<TrainQueryResp> queryAll() {
 		List<Train> trainList = selectAll();
-		trainList = selectAll();
+		// trainList = selectAll();
 		return BeanUtil.copyToList(trainList, TrainQueryResp.class);
 	}
 
