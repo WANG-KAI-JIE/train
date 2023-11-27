@@ -21,7 +21,7 @@ public class ServerGenerator {
 	static String serverPath = "[module]/src/main/java/top/kjwang/train/[module]/";
 	static String pomPath = "generator/pom.xml";
 	static String vuePath = "admin/src/views/main/business/";
-	static boolean readOnly = false;
+	static boolean readOnly = true;
 
 	static {
 		new File(servicePath).mkdirs();
