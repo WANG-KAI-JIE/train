@@ -11,8 +11,8 @@ import top.kjwang.train.common.resp.CommonResp;
  * @date 2023/11/27 16:14
  * @description MemberFeign
  */
-// @FeignClient(name = "member", url = "http://127.0.0.1:8001")
-@FeignClient(name = "member")
+@FeignClient(name = "member", url = "http://127.0.0.1:8001")
+// @FeignClient(name = "member")
 public interface MemberFeign {
 
 	@GetMapping("/member/feign/ticket/save")

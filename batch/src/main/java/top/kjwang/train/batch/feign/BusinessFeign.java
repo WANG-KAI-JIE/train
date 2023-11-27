@@ -14,8 +14,8 @@ import java.util.Date;
  * @description BusinessFeign
  */
 
-// @FeignClient(name = "business", url = "http://127.0.0.1:8002/business")
-@FeignClient(name = "business")
+@FeignClient(name = "business", url = "http://127.0.0.1:8002/business")
+// @FeignClient(name = "business")
 public interface BusinessFeign {
 
     @GetMapping("/hello")
