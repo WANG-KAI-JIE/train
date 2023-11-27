@@ -11,7 +11,7 @@ import top.kjwang.train.business.domain.ConfirmOrder;
 import top.kjwang.train.business.domain.ConfirmOrderExample;
 import top.kjwang.train.business.mapper.ConfirmOrderMapper;
 import top.kjwang.train.business.req.ConfirmOrderQueryReq;
-import top.kjwang.train.business.req.ConfirmOrderSaveReq;
+import top.kjwang.train.business.req.ConfirmOrderDoReq;
 import top.kjwang.train.business.resp.ConfirmOrderQueryResp;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
@@ -23,49 +23,53 @@ import java.util.List;
 @Service
 public class ConfirmOrderService {
 
-private static final Logger LOG = LoggerFactory.getLogger(ConfirmOrderService.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ConfirmOrderService.class);
 
-@Resource
-private ConfirmOrderMapper confirmOrderMapper;
+	@Resource
+	private ConfirmOrderMapper confirmOrderMapper;
 
-public void save(ConfirmOrderSaveReq req) {
-DateTime now = DateTime.now();
-ConfirmOrder confirmOrder = BeanUtil.copyProperties(req, ConfirmOrder.class);
-if (ObjectUtil.isNull(confirmOrder.getId())) {
-confirmOrder.setId(SnowUtil.getSnowflakeNextId());
-confirmOrder.setCreateTime(now);
-confirmOrder.setUpdateTime(now);
-confirmOrderMapper.insert(confirmOrder);
-} else {
-confirmOrder.setUpdateTime(now);
-confirmOrderMapper.updateByPrimaryKey(confirmOrder);
+	public void save(ConfirmOrderDoReq req) {
+		DateTime now = DateTime.now();
+		ConfirmOrder confirmOrder = BeanUtil.copyProperties(req, ConfirmOrder.class);
+		if (ObjectUtil.isNull(confirmOrder.getId())) {
+			confirmOrder.setId(SnowUtil.getSnowflakeNextId());
+			confirmOrder.setCreateTime(now);
+			confirmOrder.setUpdateTime(now);
+			confirmOrderMapper.insert(confirmOrder);
+		} else {
+			confirmOrder.setUpdateTime(now);
+			confirmOrderMapper.updateByPrimaryKey(confirmOrder);
+		}
+	}
+
+	public PageResp<ConfirmOrderQueryResp> queryList(ConfirmOrderQueryReq req) {
+		ConfirmOrderExample confirmOrderExample = new ConfirmOrderExample();
+		confirmOrderExample.setOrderByClause("id desc");
+		ConfirmOrderExample.Criteria criteria = confirmOrderExample.createCriteria();
+
+		LOG.info("查询页码：{}", req.getPage());
+		LOG.info("每页条数：{}", req.getSize());
+		PageHelper.startPage(req.getPage(), req.getSize());
+		List<ConfirmOrder> confirmOrderList = confirmOrderMapper.selectByExample(confirmOrderExample);
+
+		PageInfo<ConfirmOrder> pageInfo = new PageInfo<>(confirmOrderList);
+		LOG.info("总行数：{}", pageInfo.getTotal());
+		LOG.info("总页数：{}", pageInfo.getPages());
+
+		List<ConfirmOrderQueryResp> list = BeanUtil.copyToList(confirmOrderList, ConfirmOrderQueryResp.class);
+
+		PageResp<ConfirmOrderQueryResp> pageResp = new PageResp<>();
+		pageResp.setTotal(pageInfo.getTotal());
+		pageResp.setList(list);
+		return pageResp;
+	}
+
+	public void delete(Long id) {
+		confirmOrderMapper.deleteByPrimaryKey(id);
+	}
+
+	public void doConfirm(ConfirmOrderDoReq req) {
+
+	}
+
 }
-}
-
-public PageResp<ConfirmOrderQueryResp> queryList(ConfirmOrderQueryReq req) {
-    ConfirmOrderExample confirmOrderExample = new ConfirmOrderExample();
-    confirmOrderExample.setOrderByClause("id desc");
-    ConfirmOrderExample.Criteria criteria = confirmOrderExample.createCriteria();
-
-    LOG.info("查询页码：{}", req.getPage());
-    LOG.info("每页条数：{}", req.getSize());
-    PageHelper.startPage(req.getPage(), req.getSize());
-    List<ConfirmOrder> confirmOrderList = confirmOrderMapper.selectByExample(confirmOrderExample);
-
-    PageInfo<ConfirmOrder> pageInfo = new PageInfo<>(confirmOrderList);
-    LOG.info("总行数：{}", pageInfo.getTotal());
-    LOG.info("总页数：{}", pageInfo.getPages());
-
-    List<ConfirmOrderQueryResp> list = BeanUtil.copyToList(confirmOrderList, ConfirmOrderQueryResp.class);
-
-        PageResp<ConfirmOrderQueryResp> pageResp = new PageResp<>();
-            pageResp.setTotal(pageInfo.getTotal());
-            pageResp.setList(list);
-            return pageResp;
-            }
-
-            public void delete(Long id) {
-            confirmOrderMapper.deleteByPrimaryKey(id);
-            }
-
-            }
