@@ -1,0 +1,20 @@
+POST http://localhost:8000/business/confirm-order/do
+Content-Type: application/json
+token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDExNTA2NDcsIm1vYmlsZSI6IjEzMDAwMDAwMDAwIiwiaWQiOjE3MjY1NjAxNzIwNjg5NjY0MDAsImV4cCI6MTcwMTIzNzA0NywiaWF0IjoxNzAxMTUwNjQ3fQ._jU23FtYytFGO3S2Beul7FzIKlN_bKaFWg0POW-RrPg
+
+{
+  "dailyTrainTicketId": 1729383387061424128,
+  "date": 1701273600000,
+  "end": "杭州站",
+  "start": "宜兴站",
+  "tickets": [
+    {
+      "passengerId": 1726948492271816704,
+      "passengerIdCard": "332211",
+      "passengerName": "奶牛猫",
+      "passengerType": "2",
+      "seatTypeCode": "1"
+    }
+  ],
+  "trainCode": "D2"
+}
