@@ -11,12 +11,12 @@
     </TestPlan>
     <hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="线程组" enabled="true">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.on_sample_error">startnextloop</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="循环控制器" enabled="true">
           <stringProp name="LoopController.loops">1</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.delayedStart">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -32,8 +32,8 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-	&quot;mobile&quot;: &quot;&quot;,&#xd;
-	&quot;password&quot;: &quot;&quot; &#xd;
+  &quot;mobile&quot;: &quot;13000000000&quot;,&#xd;
+  &quot;code&quot;: &quot;8888&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -55,6 +55,15 @@
           <intProp name="HTTPSampler.ipSourceType">0</intProp>
         </HTTPSamplerProxy>
         <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP信息头管理器" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
           <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="查看结果树" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
@@ -116,20 +125,20 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;dailyTrainTicketId&quot;: 1729383387061424128,&#xd;
+  &quot;dailyTrainTicketId&quot;: 1729392892692271104,&#xd;
   &quot;date&quot;: 1701273600000,&#xd;
-  &quot;end&quot;: &quot;杭州站&quot;,&#xd;
-  &quot;start&quot;: &quot;宜兴站&quot;,&#xd;
+  &quot;end&quot;: &quot;徐州站&quot;,&#xd;
+  &quot;start&quot;: &quot;上海站&quot;,&#xd;
   &quot;tickets&quot;: [&#xd;
     {&#xd;
-      &quot;passengerId&quot;: 1726948492271816704,&#xd;
-      &quot;passengerIdCard&quot;: &quot;332211&quot;,&#xd;
-      &quot;passengerName&quot;: &quot;奶牛猫&quot;,&#xd;
+      &quot;passengerId&quot;: 1726962790993891328,&#xd;
+      &quot;passengerIdCard&quot;: &quot;887766&quot;,&#xd;
+      &quot;passengerName&quot;: &quot;煤球球&quot;,&#xd;
       &quot;passengerType&quot;: &quot;2&quot;,&#xd;
       &quot;seatTypeCode&quot;: &quot;1&quot;&#xd;
     }&#xd;
   ],&#xd;
-  &quot;trainCode&quot;: &quot;D2&quot;&#xd;
+  &quot;trainCode&quot;: &quot;G1&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
@@ -155,11 +164,11 @@
             <collectionProp name="HeaderManager.headers">
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
-                <stringProp name="Header.value">application/json</stringProp>
+                <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
               </elementProp>
               <elementProp name="token" elementType="Header">
                 <stringProp name="Header.name">token</stringProp>
-                <stringProp name="Header.value">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDExNTA2NDcsIm1vYmlsZSI6IjEzMDAwMDAwMDAwIiwiaWQiOjE3MjY1NjAxNzIwNjg5NjY0MDAsImV4cCI6MTcwMTIzNzA0NywiaWF0IjoxNzAxMTUwNjQ3fQ._jU23FtYytFGO3S2Beul7FzIKlN_bKaFWg0POW-RrPg</stringProp>
+                <stringProp name="Header.value">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDExNTcwMDksIm1vYmlsZSI6IjEzMDAwMDAwMDAwIiwiaWQiOjE3MjY1NjAxNzIwNjg5NjY0MDAsImV4cCI6MTcwMTI0MzQwOSwiaWF0IjoxNzAxMTU3MDA5fQ.FTBacN1PKnuGjNHdw0o7oJ_wxu4cc5O6yu5r4ehNch8</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
