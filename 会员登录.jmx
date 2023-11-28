@@ -109,7 +109,7 @@
           <stringProp name="LoopController.loops">1</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">500</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.delayedStart">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -125,20 +125,20 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;dailyTrainTicketId&quot;: 1729392892692271104,&#xd;
+  &quot;dailyTrainTicketId&quot;: 1729417130048360448,&#xd;
   &quot;date&quot;: 1701273600000,&#xd;
-  &quot;end&quot;: &quot;徐州站&quot;,&#xd;
-  &quot;start&quot;: &quot;上海站&quot;,&#xd;
+  &quot;end&quot;: &quot;杭州站&quot;,&#xd;
+  &quot;start&quot;: &quot;南京站&quot;,&#xd;
   &quot;tickets&quot;: [&#xd;
     {&#xd;
-      &quot;passengerId&quot;: 1726962790993891328,&#xd;
-      &quot;passengerIdCard&quot;: &quot;887766&quot;,&#xd;
-      &quot;passengerName&quot;: &quot;煤球球&quot;,&#xd;
-      &quot;passengerType&quot;: &quot;2&quot;,&#xd;
+      &quot;passengerId&quot;: 1726951090617978880,&#xd;
+      &quot;passengerIdCard&quot;: &quot;772233&quot;,&#xd;
+      &quot;passengerName&quot;: &quot;翠花&quot;,&#xd;
+      &quot;passengerType&quot;: &quot;1&quot;,&#xd;
       &quot;seatTypeCode&quot;: &quot;1&quot;&#xd;
     }&#xd;
   ],&#xd;
-  &quot;trainCode&quot;: &quot;G1&quot;&#xd;
+  &quot;trainCode&quot;: &quot;D2&quot;&#xd;
 }</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
