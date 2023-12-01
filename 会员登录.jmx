@@ -109,7 +109,7 @@
           <stringProp name="LoopController.loops">1</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">20</stringProp>
         <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.delayedStart">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -125,15 +125,15 @@
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  &quot;dailyTrainTicketId&quot;: 1729417130048360448,&#xd;
-  &quot;date&quot;: 1701273600000,&#xd;
+  &quot;dailyTrainTicketId&quot;: 1730407263870521344,&#xd;
+  &quot;date&quot;: 1701532800000,&#xd;
   &quot;end&quot;: &quot;杭州站&quot;,&#xd;
-  &quot;start&quot;: &quot;南京站&quot;,&#xd;
+  &quot;start&quot;: &quot;宜兴站&quot;,&#xd;
   &quot;tickets&quot;: [&#xd;
     {&#xd;
-      &quot;passengerId&quot;: 1726951090617978880,&#xd;
-      &quot;passengerIdCard&quot;: &quot;772233&quot;,&#xd;
-      &quot;passengerName&quot;: &quot;翠花&quot;,&#xd;
+      &quot;passengerId&quot;: 1726949105474867200,&#xd;
+      &quot;passengerIdCard&quot;: &quot;998877&quot;,&#xd;
+      &quot;passengerName&quot;: &quot;橘猫&quot;,&#xd;
       &quot;passengerType&quot;: &quot;1&quot;,&#xd;
       &quot;seatTypeCode&quot;: &quot;1&quot;&#xd;
     }&#xd;
@@ -168,7 +168,7 @@
               </elementProp>
               <elementProp name="token" elementType="Header">
                 <stringProp name="Header.name">token</stringProp>
-                <stringProp name="Header.value">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDExNTcwMDksIm1vYmlsZSI6IjEzMDAwMDAwMDAwIiwiaWQiOjE3MjY1NjAxNzIwNjg5NjY0MDAsImV4cCI6MTcwMTI0MzQwOSwiaWF0IjoxNzAxMTU3MDA5fQ.FTBacN1PKnuGjNHdw0o7oJ_wxu4cc5O6yu5r4ehNch8</stringProp>
+                <stringProp name="Header.value">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYmYiOjE3MDEzOTc5NDAsIm1vYmlsZSI6IjEzMDAwMDAwMDAwIiwiaWQiOjE3MjY1NjAxNzIwNjg5NjY0MDAsImV4cCI6MTcwMTQ4NDM0MCwiaWF0IjoxNzAxMzk3OTQwfQ.UdRqaFn19P_qjOOEktek5jNZ03BhWLD4laVdNwgEIaM</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
