@@ -8,7 +8,7 @@ package top.kjwang.train.business.enums;
 
 public enum RocketMQTopicEnum {
 	// 如果用我的消息队列，可以修改下这个枚举值，打上自己的logo，方便在MQ查找消息！
-	CONFIRM_ORDER("CONFIRM_ORDER", "确认订单排队");
+	CONFIRM_ORDER("CONFIRM_ORDER_WKJ", "确认订单排队");
 
 	private String code;
 
