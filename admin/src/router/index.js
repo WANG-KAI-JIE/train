@@ -14,6 +14,10 @@ const routes = [
         component: () => import('../views/main/about.vue')
       },
       {
+        path: 'student',
+        component: () => import('../views/main/business/student.vue')
+      },
+      {
         path: 'member/',
         children: [{
           path: 'ticket',

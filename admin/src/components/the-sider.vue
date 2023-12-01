@@ -12,6 +12,9 @@
       <a-menu-item key="/about">
         <router-link to="/about"> <user-outlined /> 关于 </router-link>
       </a-menu-item>
+      <a-menu-item key="/student">
+        <router-link to="/student"> <user-outlined /> 学生 </router-link>
+      </a-menu-item>
 
       <a-sub-menu key="member">
         <template #title>
