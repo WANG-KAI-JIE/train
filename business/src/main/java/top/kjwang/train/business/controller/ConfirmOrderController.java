@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import top.kjwang.train.business.req.ConfirmOrderDoReq;
+import top.kjwang.train.business.service.BeforeConfirmOrderService;
 import top.kjwang.train.business.service.ConfirmOrderService;
 import top.kjwang.train.common.resp.CommonResp;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
@@ -32,6 +33,9 @@ public class ConfirmOrderController {
 	@Resource
 	private ConfirmOrderService confirmOrderService;
 
+	@Resource
+	private BeforeConfirmOrderService beforeConfirmOrderService;
+
 	@Autowired
 	private StringRedisTemplate redisTemplate;
 
@@ -54,7 +58,7 @@ public class ConfirmOrderController {
 			// 验证通过后，移除验证码
 			redisTemplate.delete(imageCodeToken);
 		}
-		confirmOrderService.doConfirm(req);
+		beforeConfirmOrderService.beforeDoConfirm(req);
 		return new CommonResp<>();
 	}
 }
