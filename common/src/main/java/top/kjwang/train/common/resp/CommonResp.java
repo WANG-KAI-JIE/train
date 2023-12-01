@@ -54,6 +54,12 @@ public class CommonResp<T> {
 		this.content = content;
 	}
 
+	public CommonResp(boolean success, String message, T content) {
+		this.success = success;
+		this.message = message;
+		this.content = content;
+	}
+
 	@Override
 	public String toString() {
 		return "CommonResp{" + "success=" + success +
