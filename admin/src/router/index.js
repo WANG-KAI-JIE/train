@@ -14,10 +14,6 @@ const routes = [
         component: () => import('../views/main/about.vue')
       },
       {
-        path: 'student',
-        component: () => import('../views/main/business/student.vue')
-      },
-      {
         path: 'member/',
         children: [{
           path: 'ticket',
@@ -88,6 +84,10 @@ const routes = [
           {
             path: 'confirm-order',
             component: () => import('../views/main/business/confirm-order.vue')
+          },
+          {
+            path: 'sk-token',
+            component: () => import('../views/main/business/sk-token.vue')
           }
         ]
       },

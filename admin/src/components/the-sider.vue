@@ -12,9 +12,6 @@
       <a-menu-item key="/about">
         <router-link to="/about"> <user-outlined /> 关于 </router-link>
       </a-menu-item>
-      <a-menu-item key="/student">
-        <router-link to="/student"> <user-outlined /> 学生 </router-link>
-      </a-menu-item>
 
       <a-sub-menu key="member">
         <template #title>
@@ -38,6 +35,12 @@
             业务管理
           </span>
         </template>
+        <a-menu-item key="/business/sk-token">
+          <router-link to="/business/sk-token">
+            <user-outlined />
+            令牌余量
+          </router-link>
+        </a-menu-item>
         <a-menu-item key="/business/confirm-order">
           <router-link to="/business/confirm-order">
             <user-outlined />
