@@ -3,13 +3,16 @@ package top.kjwang.train.business.service;
 import cn.hutool.core.date.DateUtil;
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.alibaba.fastjson.JSON;
 import jakarta.annotation.Resource;
+import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import top.kjwang.train.business.enums.RedisKeyPreEnum;
+import top.kjwang.train.business.enums.RocketMQTopicEnum;
 import top.kjwang.train.business.mapper.ConfirmOrderMapper;
 import top.kjwang.train.business.req.ConfirmOrderDoReq;
 import top.kjwang.train.common.context.LoginMemberContext;
@@ -44,6 +47,9 @@ public class BeforeConfirmOrderService {
 	@Resource
 	private AfterConfirmOrderService afterConfirmOrderService;
 
+	@Resource
+	public RocketMQTemplate rocketMQTemplate;
+
 	@Autowired
 	private StringRedisTemplate redisTemplate;
 
@@ -74,8 +80,11 @@ public class BeforeConfirmOrderService {
 			throw new BusinessException(BusinessExceptionEnum.CONFIRM_ORDER_LOCK_FAIL);
 		}
 
-		// 可以购票：TODO: 发送MQ，等待出票
-		LOG.info("准备发送MQ，等待出票");
+		// 发送MQ排队购票
+		String reqJson = JSON.toJSONString(req);
+		LOG.info("排队购票，发送mq开始，消息：{}", reqJson);
+		rocketMQTemplate.convertAndSend(RocketMQTopicEnum.CONFIRM_ORDER.getCode(), reqJson);
+		LOG.info("排队购票，发送mq结束");
 
 	}
 
